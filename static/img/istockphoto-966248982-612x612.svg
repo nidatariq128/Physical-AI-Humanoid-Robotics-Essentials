@@ -1,0 +1,36 @@
+<svg width="612" height="612" viewBox="0 0 612 612" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f8f9fa"/>
+  <!-- Central robot figure -->
+  <circle cx="306" cy="200" r="40" fill="#2e8555" opacity="0.8"/>
+  <!-- Robot head with face -->
+  <circle cx="290" cy="190" r="4" fill="#fff"/>
+  <circle cx="322" cy="190" r="4" fill="#fff"/>
+  <path d="M 295 215 Q 306 225 317 215" stroke="#fff" stroke-width="2" fill="none"/>
+  <!-- Robot body -->
+  <rect x="266" y="240" width="80" height="100" rx="10" fill="#2e8555" opacity="0.8"/>
+  <!-- Robot arms -->
+  <rect x="230" y="250" width="36" height="15" rx="7" fill="#2e8555" opacity="0.8"/>
+  <rect x="346" y="250" width="36" height="15" rx="7" fill="#2e8555" opacity="0.8"/>
+  <!-- Robot legs -->
+  <rect x="276" y="340" width="20" height="40" rx="5" fill="#2e8555" opacity="0.8"/>
+  <rect x="310" y="340" width="20" height="40" rx="5" fill="#2e8555" opacity="0.8"/>
+  <!-- AI/Neural network elements around the robot -->
+  <circle cx="150" cy="150" r="8" fill="#ff6b6b" opacity="0.7"/>
+  <circle cx="460" cy="150" r="8" fill="#ff6b6b" opacity="0.7"/>
+  <circle cx="100" cy="300" r="8" fill="#4ecdc4" opacity="0.7"/>
+  <circle cx="510" cy="300" r="8" fill="#4ecdc4" opacity="0.7"/>
+  <circle cx="150" cy="450" r="8" fill="#45b7d1" opacity="0.7"/>
+  <circle cx="460" cy="450" r="8" fill="#45b7d1" opacity="0.7"/>
+  <!-- Connection lines representing neural network -->
+  <line x1="306" y1="200" x2="150" y2="150" stroke="#ff6b6b" stroke-width="1" opacity="0.5"/>
+  <line x1="306" y1="200" x2="460" y2="150" stroke="#ff6b6b" stroke-width="1" opacity="0.5"/>
+  <line x1="306" y1="200" x2="100" y2="300" stroke="#4ecdc4" stroke-width="1" opacity="0.5"/>
+  <line x1="306" y1="200" x2="510" y2="300" stroke="#4ecdc4" stroke-width="1" opacity="0.5"/>
+  <line x1="306" y1="200" x2="150" y2="450" stroke="#45b7d1" stroke-width="1" opacity="0.5"/>
+  <line x1="306" y1="200" x2="460" y2="450" stroke="#45b7d1" stroke-width="1" opacity="0.5"/>
+  <!-- Additional tech elements -->
+  <polygon points="306,100 320,130 350,130 325,150 340,180 306,160 272,180 287,150 262,130 292,130" fill="none" stroke="#2e8555" stroke-width="2" opacity="0.6"/>
+  <!-- Background elements -->
+  <circle cx="50" cy="50" r="150" fill="none" stroke="#e0e0e0" stroke-width="0.5" opacity="0.3"/>
+  <circle cx="562" cy="562" r="150" fill="none" stroke="#e0e0e0" stroke-width="0.5" opacity="0.3"/>
+</svg>

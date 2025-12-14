@@ -1,0 +1,298 @@
+# Content API Contract for AI Robotics Book
+
+openapi: 3.0.0
+info:
+  title: AI Robotics Book Content API
+  description: API for managing and accessing AI Robotics Book content
+  version: 1.0.0
+
+paths:
+  /sections:
+    get:
+      summary: Get all book sections
+      description: Retrieve all sections of the AI Robotics Book organized by modules
+      responses:
+        '200':
+          description: List of all book sections
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sections:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/BookSection'
+                  modules:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Module'
+
+  /sections/{sectionId}:
+    get:
+      summary: Get specific section
+      description: Retrieve a specific section by ID
+      parameters:
+        - name: sectionId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique identifier of the section
+      responses:
+        '200':
+          description: Specific book section
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookSection'
+        '404':
+          description: Section not found
+
+  /citations:
+    get:
+      summary: Get all citations
+      description: Retrieve all citations used in the book
+      responses:
+        '200':
+          description: List of all citations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  citations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Citation'
+                  summary:
+                    $ref: '#/components/schemas/CitationSummary'
+
+  /modules:
+    get:
+      summary: Get all modules
+      description: Retrieve all modules in the book
+      responses:
+        '200':
+          description: List of all modules
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Module'
+
+  /validation/status:
+    get:
+      summary: Get validation status
+      description: Retrieve the current validation status of the book
+      responses:
+        '200':
+          description: Validation status report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationStatus'
+
+components:
+  schemas:
+    BookSection:
+      type: object
+      required:
+        - id
+        - name
+        - module
+        - content
+        - validation_status
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the section
+        name:
+          type: string
+          description: Name of the section
+        module:
+          type: string
+          description: Module this section belongs to
+          enum: [foundations, ros2, simulation, perception, vla, capstone, hardware]
+        content:
+          type: string
+          description: Markdown content of the section
+        word_count:
+          type: integer
+          description: Number of words in the section
+        citations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Citation'
+        learning_objectives:
+          type: array
+          items:
+            type: string
+        prerequisites:
+          type: array
+          items:
+            type: string
+        validation_status:
+          type: string
+          description: Current validation status
+          enum: [draft, reviewed, validated, published]
+
+    Module:
+      type: object
+      required:
+        - id
+        - name
+        - order
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the module
+        name:
+          type: string
+          description: Display name of the module
+        description:
+          type: string
+          description: Brief description of the module
+        order:
+          type: integer
+          description: Order in the 13-week progression
+        sections:
+          type: array
+          items:
+            type: string
+            description: IDs of sections in this module
+        learning_outcomes:
+          type: array
+          items:
+            type: string
+        prerequisites:
+          type: array
+          items:
+            type: string
+        estimated_duration:
+          type: integer
+          description: Estimated time in hours to complete
+
+    Citation:
+      type: object
+      required:
+        - id
+        - title
+        - authors
+        - year
+        - apa_citation
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the citation
+        type:
+          type: string
+          description: Type of source
+          enum: [journal, conference, book, documentation, standard, web]
+        title:
+          type: string
+          description: Title of the source
+        authors:
+          type: array
+          items:
+            type: string
+          description: Authors of the source
+        year:
+          type: integer
+          description: Publication year
+        publisher:
+          type: string
+          description: Publisher or venue
+        url:
+          type: string
+          format: uri
+          description: URL if available
+        doi:
+          type: string
+          description: DOI if available
+        peer_reviewed:
+          type: boolean
+          description: Whether this is peer-reviewed literature
+        apa_citation:
+          type: string
+          description: Properly formatted APA citation
+        access_date:
+          type: string
+          format: date
+          description: When this source was accessed
+
+    CitationSummary:
+      type: object
+      properties:
+        total_citations:
+          type: integer
+          description: Total number of citations in the book
+        peer_reviewed_count:
+          type: integer
+          description: Number of peer-reviewed citations
+        peer_reviewed_percentage:
+          type: number
+          description: Percentage of peer-reviewed citations
+          format: float
+          minimum: 0
+          maximum: 1
+        validation_status:
+          type: string
+          description: Whether citation requirements are met
+          enum: [compliant, non_compliant]
+
+    ValidationStatus:
+      type: object
+      properties:
+        word_count:
+          type: object
+          properties:
+            current:
+              type: integer
+              description: Current word count
+            min:
+              type: integer
+              description: Minimum required (5000)
+            max:
+              type: integer
+              description: Maximum allowed (7000)
+            status:
+              type: string
+              enum: [compliant, non_compliant]
+        citations:
+          $ref: '#/components/schemas/CitationSummary'
+        readability:
+          type: object
+          properties:
+            flesch_kincaid_grade:
+              type: number
+              description: Current Flesch-Kincaid Grade Level
+            target_min:
+              type: number
+              description: Minimum target (10.0)
+            target_max:
+              type: number
+              description: Maximum target (12.0)
+            status:
+              type: string
+              enum: [compliant, non_compliant]
+        plagiarism:
+          type: object
+          properties:
+            status:
+              type: string
+              enum: [clean, flagged]
+            details:
+              type: string
+              description: Details of plagiarism check
+        constitutional_compliance:
+          type: object
+          properties:
+            status:
+              type: string
+              enum: [compliant, non_compliant]
+            issues:
+              type: array
+              items:
+                type: string

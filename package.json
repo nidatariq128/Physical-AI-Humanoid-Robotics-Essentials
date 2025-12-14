@@ -1,0 +1,53 @@
+{
+  "name": "ai-robotics-book",
+  "version": "1.0.0",
+  "description": "AI Robotics Book - An academic text on Physical AI and Humanoid Robotics",
+  "private": true,
+  "scripts": {
+    "docusaurus": "docusaurus",
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "clear": "docusaurus clear",
+    "serve": "docusaurus serve",
+    "write-translations": "docusaurus write-translations",
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "pdf": "pandoc --from=markdown --to=pdf --output=ai-robotics-book.pdf --resource-path=docs --include-in-header=src/build/header.tex --include-in-header=src/build/style.css docs/**/**/*.md docs/**/*/*.md docs/**/*.md",
+    "validate-citations": "node src/tools/citation-validator.js",
+    "readability-check": "python src/tools/readability-checker.py",
+    "word-count": "python src/tools/word-counter.py",
+    "plagiarism-check": "python src/tools/plagiarism-detector.py",
+    "validate-all": "npm run word-count && npm run readability-check && npm run validate-citations && npm run plagiarism-check",
+    "constitution-check": "node src/tools/constitution-validator.js"
+  },
+  "dependencies": {
+    "@docusaurus/core": "^3.9.2",
+    "@docusaurus/preset-classic": "^3.9.2",
+    "@mdx-js/react": "^3.0.0",
+    "clsx": "^2.0.0",
+    "prism-react-renderer": "^2.3.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@docusaurus/module-type-aliases": "^3.9.2",
+    "@docusaurus/plugin-content-docs": "^3.1.0",
+    "@docusaurus/types": "3.1.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 3 chrome version",
+      "last 3 firefox version",
+      "last 5 safari version"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0"
+  }
+}
