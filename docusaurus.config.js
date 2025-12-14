@@ -103,19 +103,19 @@ const config = {
               },
               {
                 label: 'Simulation',
-                to: '/docs/simulation/intro',
+                to: '/docs/simulation/simulation-comprehensive',
               },
               {
                 label: 'Perception',
-                to: '/docs/perception/intro',
+                to: '/docs/perception/perception-navigation-comprehensive',
               },
               {
                 label: 'VLA Systems',
-                to: '/docs/vla/intro',
+                to: '/docs/vla/vla-comprehensive',
               },
               {
                 label: 'Capstone',
-                to: '/docs/capstone/intro',
+                to: '/docs/capstone/capstone-comprehensive',
               },
             ],
           },
