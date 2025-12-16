@@ -13,24 +13,26 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://nidatariq128.github.io',
+  url: 'https://physical-ai-humanoid-robotics-essentials.vercel.app',
   // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is '/<repository-name>/'
-  baseUrl: '/Physical-AI-Humanoid-Robotics-Essentials/',
+  // For Vercel deployment, use '/' for root
+  baseUrl: '/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
+  // These are still needed for the GitHub links and deployment
   organizationName: 'nidatariq128', // Usually your GitHub org/user name.
   projectName: 'Physical-AI-Humanoid-Robotics-Essentials', // Usually your repo name.
 
   onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
   markdown: {
     mermaid: true,
     mdx1Compat: {
       comments: true,
       admonitions: true,
       headingIds: true,
+    },
+    // @ts-ignore
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
     },
   },
 
@@ -52,7 +54,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/your-username/ai-robotics-book/edit/main/',
+            'https://github.com/nidatariq128/Physical-AI-Humanoid-Robotics-Essentials/edit/main/',
         },
         blog: false, // Disable blog if not needed
         theme: {
@@ -78,10 +80,10 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Book',
+            label: 'Documentation',
           },
           {
-            href: 'https://github.com/your-username/ai-robotics-book',
+            href: 'https://github.com/nidatariq128/Physical-AI-Humanoid-Robotics-Essentials',
             label: 'GitHub',
             position: 'right',
           },
@@ -98,7 +100,7 @@ const config = {
                 to: '/docs/foundations/intro',
               },
               {
-                label: 'ROS 2',
+                label: 'ROS 2 Control',
                 to: '/docs/ros2/intro',
               },
               {
@@ -106,7 +108,7 @@ const config = {
                 to: '/docs/simulation/simulation-comprehensive',
               },
               {
-                label: 'Perception',
+                label: 'Perception & Navigation',
                 to: '/docs/perception/perception-navigation-comprehensive',
               },
               {
@@ -114,8 +116,20 @@ const config = {
                 to: '/docs/vla/vla-comprehensive',
               },
               {
-                label: 'Capstone',
+                label: 'Capstone Project',
                 to: '/docs/capstone/capstone-comprehensive',
+              },
+              {
+                label: 'Hardware',
+                to: '/docs/hardware/hardware-comprehensive',
+              },
+              {
+                label: 'Progression',
+                to: '/docs/progression/progression-comprehensive',
+              },
+              {
+                label: 'References',
+                to: '/docs/bibliography/references',
               },
             ],
           },
@@ -124,7 +138,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/your-username/ai-robotics-book',
+                href: 'https://github.com/nidatariq128/Physical-AI-Humanoid-Robotics-Essentials',
               },
             ],
           },

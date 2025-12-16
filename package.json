@@ -19,7 +19,8 @@
     "word-count": "python src/tools/word-counter.py",
     "plagiarism-check": "python src/tools/plagiarism-detector.py",
     "validate-all": "npm run word-count && npm run readability-check && npm run validate-citations && npm run plagiarism-check",
-    "constitution-check": "node src/tools/constitution-validator.js"
+    "constitution-check": "node src/tools/constitution-validator.js",
+    "vercel-build": "npm run build"
   },
   "dependencies": {
     "@docusaurus/core": "^3.9.2",
