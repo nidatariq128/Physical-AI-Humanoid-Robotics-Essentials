@@ -16,7 +16,7 @@ const config = {
   url: 'https://physical-ai-humanoid-robotics-essentials.vercel.app',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For Vercel deployment, use '/' for root
-  baseUrl: '/',
+  baseUrl: '/Physical-AI-Humanoid-Robotics-Essentials/',
 
   // These are still needed for the GitHub links and deployment
   organizationName: 'nidatariq128', // Usually your GitHub org/user name.
