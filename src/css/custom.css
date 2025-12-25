@@ -4,27 +4,110 @@
  * work well for content-centric websites.
  */
 
-/* You can override the default Infima variables here. */
+/* Import unified design system */
+@import 'theme.css';
+
+/* You can override the default Infima variables here to match our unified design system. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: var(--color-primary-500);
+  --ifm-color-primary-dark: var(--color-primary-600);
+  --ifm-color-primary-darker: var(--color-primary-700);
+  --ifm-color-primary-darkest: var(--color-primary-800);
+  --ifm-color-primary-light: var(--color-primary-400);
+  --ifm-color-primary-lighter: var(--color-primary-300);
+  --ifm-color-primary-lightest: var(--color-primary-200);
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(0, 102, 255, 0.1); /* Using our primary color */
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: var(--color-primary-400);
+  --ifm-color-primary-dark: var(--color-primary-500);
+  --ifm-color-primary-darker: var(--color-primary-600);
+  --ifm-color-primary-darkest: var(--color-primary-700);
+  --ifm-color-primary-light: var(--color-primary-300);
+  --ifm-color-primary-lighter: var(--color-primary-200);
+  --ifm-color-primary-lightest: var(--color-primary-100);
+  --docusaurus-highlighted-code-line-bg: rgba(61, 158, 255, 0.2);
+}
+
+/* Additional Infima overrides to match our unified design system */
+:root {
+  /* Typography */
+  --ifm-font-family-base: var(--font-family-primary);
+  --ifm-font-size-base: var(--font-size-base);
+  --ifm-line-height-base: 1.6;
+
+  /* Spacing */
+  --ifm-spacing-horizontal: var(--spacing-md);
+  --ifm-spacing-vertical: var(--spacing-md);
+
+  /* Border radius */
+  --ifm-global-radius: var(--radius-md);
+
+  /* Shadows */
+  --ifm-global-shadow: var(--shadow-md);
+
+  /* Code block colors */
+  --ifm-code-background: var(--color-neutral-100);
+  --ifm-code-color: var(--color-text-primary);
+
+  /* Blockquote */
+  --ifm-blockquote-border-left-width: 4px;
+  --ifm-blockquote-color: var(--color-text-primary);
+
+  /* Navbar */
+  --ifm-navbar-background-color: var(--color-bg-primary);
+  --ifm-navbar-shadow: var(--shadow-sm);
+
+  /* Footer */
+  --ifm-footer-background-color: var(--color-bg-secondary);
+  --ifm-footer-color: var(--color-text-primary);
+  --ifm-footer-link-color: var(--color-text-secondary);
+  --ifm-footer-link-hover-color: var(--color-primary-500);
+}
+
+/* Dark theme Infima overrides */
+[data-theme='dark'] {
+  --ifm-navbar-background-color: var(--color-bg-surface-dark);
+  --ifm-footer-background-color: var(--color-bg-tertiary-dark);
+  --ifm-code-background: var(--color-bg-tertiary-dark);
+}
+
+/* RTL support for Arabic and Urdu - Updated to use our design system */
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Specific RTL adjustments for Docusaurus elements */
+html[dir="rtl"] .navbar {
+  text-align: right;
+}
+
+html[dir="rtl"] .navbar__items {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .navbar__toggle {
+  margin-left: 0.5rem;
+  margin-right: 0;
+}
+
+html[dir="rtl"] .menu__list-item-collapsible .menu__list-item-collapsible {
+  padding-right: 0;
+  padding-left: 0.5rem;
+}
+
+html[dir="rtl"] .table-of-contents__link {
+  padding-right: 0;
+  padding-left: 1.5rem;
+}
+
+html[dir="rtl"] .table-of-contents__link--active {
+  border-right: none;
+  border-left: 3px solid var(--ifm-color-primary);
+  padding-right: 0;
+  padding-left: calc(1.5rem - 3px);
 }

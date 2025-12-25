@@ -85,7 +85,7 @@ Large Language Models (LLMs) can be used to plan complex robotic actions based o
 ### LLM Integration Example
 
 ```python
-import openai
+import google.generativeai as genai
 import json
 from rclpy.node import Node
 from std_msgs.msg import String
@@ -100,7 +100,8 @@ class LLMPlannerNode(Node):
             10)
 
         # Initialize LLM client
-        openai.api_key = 'your-api-key'
+        genai.configure(api_key='your-api-key')
+        self.model = genai.GenerativeModel('gemini-pro')
 
     def command_callback(self, msg):
         command = msg.data
@@ -123,14 +124,15 @@ class LLMPlannerNode(Node):
         }}
         """
 
-        response = openai.Completion.create(
-            engine="text-davinci-003",
-            prompt=prompt,
-            max_tokens=200
+        response = self.model.generate_content(
+            prompt,
+            generation_config=genai.types.GenerationConfig(
+                max_output_tokens=200
+            )
         )
 
         try:
-            plan = json.loads(response.choices[0].text)
+            plan = json.loads(response.text)
             return plan
         except:
             return {"actions": []}

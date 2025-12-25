@@ -1,4 +1,8 @@
 {
+  "github": {
+    "enabled": true,
+    "autoAlias": true
+  },
   "builds": [
     {
       "src": "package.json",

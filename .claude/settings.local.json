@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python translate_remaining_docs.py)"
+    ]
+  }
+}

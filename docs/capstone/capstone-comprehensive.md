@@ -119,8 +119,12 @@ class SpeechRecognitionSystem:
 The LLM planning subsystem considers real-time context:
 
 ```python
+import google.generativeai as genai
+
 class LLMPlanningSystem:
     def __init__(self):
+        genai.configure(api_key='your-api-key')
+        self.model = genai.GenerativeModel('gemini-pro')
         self.context_manager = ContextManager()
         self.action_executor = ActionExecutor()
 
@@ -128,15 +132,16 @@ class LLMPlanningSystem:
         # Create comprehensive prompt with current context
         prompt = self.create_contextual_prompt(command, context)
 
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": "You are a robot planning assistant. Generate executable action plans."},
-                {"role": "user", "content": prompt}
-            ]
+        response = self.model.generate_content(
+            prompt=f"""You are a robot planning assistant. Generate executable action plans.
+
+User Command: {prompt}""",
+            generation_config=genai.types.GenerationConfig(
+                max_output_tokens=500
+            )
         )
 
-        plan = self.parse_plan_response(response.choices[0].message.content)
+        plan = self.parse_plan_response(response.text)
         return plan
 
     def create_contextual_prompt(self, command, context):

@@ -9,11 +9,17 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'AI Robotics Book',
+
+
+
+
+
+
   tagline: 'An academic text on Physical AI and Humanoid Robotics',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://physical-ai-humanoid-robotics-essentials.vercel.app',
+  url: 'https://physical-ai-humanoid-robotics-essen-tau.vercel.app/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For Vercel deployment, use '/' for root
   baseUrl: '/',
@@ -41,7 +47,25 @@ const config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'ur', 'es', 'ar'], // English, Urdu, Spanish, Arabic
+    localeConfigs: {
+      en: {
+        label: 'English',
+        direction: 'ltr',
+      },
+      ur: {
+        label: 'اردو',
+        direction: 'rtl', // Right-to-left
+      },
+      es: {
+        label: 'Español',
+        direction: 'ltr',
+      },
+      ar: {
+        label: 'العربية',
+        direction: 'rtl', // Right-to-left
+      },
+    },
   },
 
   presets: [
@@ -81,6 +105,10 @@ const config = {
             sidebarId: 'tutorialSidebar',
             position: 'left',
             label: 'Documentation',
+          },
+          {
+            type: 'localeDropdown',
+            position: 'right',
           },
           {
             href: 'https://github.com/nidatariq128/Physical-AI-Humanoid-Robotics-Essentials',

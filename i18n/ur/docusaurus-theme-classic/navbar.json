@@ -1,0 +1,18 @@
+{
+  "title": {
+    "message": "روبوٹکس کتاب برائے مصنوعی ذہانت",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "روبوٹکس کتاب برائے مصنوعی ذہانت کا لوگو",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Documentation": {
+    "message": "دستاویزات",
+    "description": "Navbar item with label Documentation"
+  },
+  "item.label.GitHub": {
+    "message": "گیت ہب",
+    "description": "Navbar item with label GitHub"
+  }
+}
